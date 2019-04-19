@@ -1,0 +1,40 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class WOEenDoelstellingEen{
+
+	public static void main(String[] args) {
+		String[] kaarten = { "Heren", "Vrouw", "Boer", "10", "9", "8", "7", "6", "5", "4", "3", "2", "AAS" };
+		String[] Soorten = { "Harten", "Ruiten", "Klaveren", "Schoppen" };
+
+		System.out.println("Het spel telt " + (kaarten.length * Soorten.length) + " kaarten in totaal.");
+		System.out.println("Random Deck: ");
+		System.out.println(" ");
+		
+		String[][] completeSpel = new String[13][4];
+		for (int a = 0; a < kaarten.length; a++) {
+			for (int b = 0; b < Soorten.length; b++) {
+				completeSpel[a][b] = Soorten[b] + " " + kaarten[a];
+			}
+		}
+		Random schudKaart = new Random();
+		Random schudKleur = new Random();
+
+
+		for (int a = 0; a < kaarten.length; a++) {
+			for (int b = 0; b < Soorten.length; b++) {
+				int papier = schudKaart.nextInt(kaarten.length);
+				int kleur = schudKleur.nextInt(Soorten.length);
+
+				String temp = completeSpel[a][b];
+				completeSpel[a][b] = completeSpel[papier][kleur];
+				completeSpel[papier][kleur] = temp;
+			}
+		}
+		for (int a = 0; a < kaarten.length; a++) {
+			for (int b = 0; b < Soorten.length; b++) {
+				System.out.println(completeSpel[a][b]);
+			}
+		}
+	}
+}
