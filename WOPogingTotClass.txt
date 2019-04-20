@@ -1,0 +1,86 @@
+import java.util.*;
+
+public class PogingNegen {
+	public static void main(String[] args) {
+		SwitchString playGame = new SwitchString();
+		KaartenDeck kaartje = new KaartenDeck();
+		kaartje.getACard = "New Game";
+		playGame.playGame = "New Game"; 
+		kaartje.Shuffle();
+		System.out.println("   dat was de laatste kaart...) \n");
+		System.out.println("De kaarten zijn geschut! (niet Spieken! :))");
+		System.out.println("U heeft 3 kansen om tot 21 te komen, succes! \n");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Welke actie wilt u uitvoeren?");
+		System.out.println("Uw keuzes: k (toevoegen), q (stoppen), p (passen).");
+		
+		playGame.playTheGame();
+
+	}
+	
+
+}
+
+class KaartenDeck {
+	String getACard;
+	
+	public void Shuffle() {
+		String[] kaarten = { "Heren = 10p", "Vrouw = 10p", "Boer = 10p", "10 = 10p", "9 = 9p", "8 = 8p", "7 = 7p", "6 = 6p", "5 = 5p", "4 = 4p", "3 = 3p", "2 = 2p", "Aas = 11p" };
+		String[] soorten = { "Harten", "Ruiten", "Klaveren", "Schoppen" };
+//		int[] waarde = {10, 10 ,10 ,10 ,9 ,8 ,7 ,6 ,5 ,4 ,3 ,2 ,11};
+		System.out.println("Welkom bij het spel BlackJack!");
+		System.out.println("(Geheimpje... Zo zijn de kaarten geschut: \n");
+
+		String[][] completeSpel = new String[13][4];
+		for (int a = 0; a < kaarten.length; a++) {
+			for (int b = 0; b < soorten.length; b++) {
+				completeSpel[a][b] = soorten[b] + " " + kaarten[a];
+			}
+		}
+		Random schudKaart = new Random();
+		Random schudKleur = new Random();
+
+		for (int a = 0; a < kaarten.length; a++) {
+			for (int b = 0; b < soorten.length; b++) {
+				int papier = schudKaart.nextInt(kaarten.length);
+				int kleur = schudKleur.nextInt(soorten.length);
+
+				String temp = completeSpel[a][b];
+				completeSpel[a][b] = completeSpel[papier][kleur];
+				completeSpel[papier][kleur] = temp;
+			}
+		}
+		for (int a = 0; a < kaarten.length; a++) {
+			for (int b = 0; b < soorten.length; b++) {
+				System.out.println(completeSpel[a][b]);
+			}
+		}
+	}
+}
+
+
+class SwitchString {
+	String playGame;
+		
+	public int playTheGame() {
+		System.out.println("Voer uw keuze in:");
+		Scanner sc = new Scanner(System.in);
+		playGame = sc.next();
+		
+		switch(playGame) {
+		case "k":
+				System.out.print("Uw nieuwe kaart is: ");
+				return 1;
+		case "p":
+			System.out.println("U past.");
+				return 2;
+		case "q":
+			System.out.println("U wilt stoppen");
+				return 3;
+		}
+		
+		return 4;
+		
+	}
+}
+

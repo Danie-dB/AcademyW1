@@ -1,0 +1,63 @@
+import java.util.*;
+
+// Gepoogd met behulp van switch te werken maar liep vast wegens gebrek aan kennis en frustratie over continue foutmeldingen
+
+public class OpzetTien {
+	public static void main(String[] args) {
+		String[] kaarten = { "Heren = 10p", "Vrouw = 10p", "Boer = 10p", "10 = 10p", "9 = 9p", "8 = 8p", "7 = 7p", "6 = 6p", "5 = 5p", "4 = 4p", "3 = 3p", "2 = 2p", "Aas = 11p" };
+		String[] soorten = { "Harten", "Ruiten", "Klaveren", "Schoppen" };
+		System.out.println("Welkom bij het spel BlackJack!");
+		System.out.println("(Geheimpje... Zo zijn de kaarten geschut: \n");
+		String[][] completeSpel = new String[13][4];
+		
+		for (int a = 0; a < kaarten.length; a++) {
+			for (int b = 0; b < soorten.length; b++) {
+				completeSpel[a][b] = soorten[b] + " " + kaarten[a];
+			}
+		}
+		Random schudKaart = new Random();
+		Random schudKleur = new Random();
+
+		for (int a = 0; a < kaarten.length; a++) {
+			for (int b = 0; b < soorten.length; b++) {
+				int papier = schudKaart.nextInt(kaarten.length);
+				int kleur = schudKleur.nextInt(soorten.length);
+
+				String temp = completeSpel[a][b];
+				completeSpel[a][b] = completeSpel[papier][kleur];
+				completeSpel[papier][kleur] = temp;
+			}
+		}
+		for (int a = 0; a < kaarten.length; a++) {
+			for (int b = 0; b < soorten.length; b++) {
+				System.out.println(completeSpel[a][b]);
+			}
+		}
+	System.out.println(" ");
+	System.out.println("   dat was de laatste kaart...) \n");
+	System.out.println("De kaarten zijn geschut! (niet Spieken! :))");
+	System.out.println("U heeft 3 kansen om tot 21 te komen, succes! \n");
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Welke actie wilt u uitvoeren?");
+	System.out.println("Uw keuzes: k (toevoegen), q (stoppen), p (passen).");
+	
+		
+			System.out.println("Voer uw keuze in:");
+			
+			String antwoord = sc.next();
+			
+			switch(antwoord) {
+			case "k":
+				System.out.print("Uw nieuwe kaart is: ");
+				System.out.println(completeSpel[0][0]);
+					break;
+			case "p":
+				System.out.println("U past.");
+				System.out.println("Het spel eindigd hier, u heeft geen kaarten in de hand.");
+					return;
+			case "q":
+				System.out.println("U wilt stoppen");
+					return;
+			}
+	}
+}
