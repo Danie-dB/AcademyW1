@@ -7,7 +7,7 @@ public class OpzetTien {
 		String[] kaarten = { "Heren = 10p", "Vrouw = 10p", "Boer = 10p", "10 = 10p", "9 = 9p", "8 = 8p", "7 = 7p", "6 = 6p", "5 = 5p", "4 = 4p", "3 = 3p", "2 = 2p", "Aas = 11p" };
 		String[] soorten = { "Harten", "Ruiten", "Klaveren", "Schoppen" };
 		System.out.println("Welkom bij het spel BlackJack!");
-		System.out.println("(Geheimpje... Zo zijn de kaarten geschut: \n");
+		System.out.println("(Geheimpje... Zo zijn de kaarten geschud: \n");
 		String[][] completeSpel = new String[13][4];
 		
 		for (int a = 0; a < kaarten.length; a++) {
@@ -35,7 +35,7 @@ public class OpzetTien {
 		}
 	System.out.println(" ");
 	System.out.println("   dat was de laatste kaart...) \n");
-	System.out.println("De kaarten zijn geschut! (niet Spieken! :))");
+	System.out.println("De kaarten zijn geschud! (niet Spieken! :))");
 	System.out.println("U heeft 3 kansen om tot 21 te komen, succes! \n");
 	Scanner sc = new Scanner(System.in);
 	System.out.println("Welke actie wilt u uitvoeren?");
